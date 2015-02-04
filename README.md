@@ -1,6 +1,6 @@
 ---
-Title: "Deploying blog with coreos docker and hugo"
-Description: "Deploying blog with coreos docker and hugo."
+Title: "Deploying blog using coreos docker and hugo"
+Description: "Deploying blog using coreos docker and hugo."
 Date: "04-02-2015"
 Categories:
     - "coreos"
@@ -8,21 +8,17 @@ Categories:
     - "hugo"
 ---
 
-#### Prelude
+#### Docker data only container
 
-Building blog with coreos docker and hugo 
-
-#### Content
-
-At first we need container with templates and content for blog generation.
-I used next dockerfile:
+At first we need data container with templates and content for blog generation.
+I used next Dockerfile:
 
 ```
 FROM debian:jessie
 
 RUN apt-get update && apt-get install --no-install-recommends -y ca-certificates git-core
 RUN git clone http://github.com/adilroot/adilnaimi.com.git /src
-VOLUME ["/src"]
+VOLUME ["/src/blog"]
 WORKDIR /src
 ENTRYPOINT ["git"]
 CMD ["pull"]
@@ -42,7 +38,7 @@ Create data container:
 docker run --name blog_content blog/content
 ```
 
-For updating content and templates from github we need just:
+T update content and templates from github we need just:
 
 ```
 docker start blog_content
@@ -68,7 +64,7 @@ RUN go get github.com/spf13/hugo
 VOLUME ["/var/www/blog"]
 
 ENTRYPOINT ["hugo"]
-CMD ["-w", "-s", "/src", "-d", "/var/www/blog"]
+CMD ["-w", "-s", "/src/blog", "-d", "/var/www/blog"]
 ```
 So, here we `go get` hugo and use /src(remember this from content container?)
 as source directory for it and `/var/www/blog` as destination.
@@ -76,8 +72,8 @@ as source directory for it and `/var/www/blog` as destination.
 Now build image and run container with hugo:
 
 ```
-docker build -t blog/rendered .
-docker run --name blog --volumes-from blog_content blog/rendered
+docker build -t blog/hugo .
+docker run --name blog --volumes-from blog_content blog/hugo
 ```
 
 Here the trick with
@@ -107,21 +103,15 @@ Put it to sites-enabled directory, which used in this pretty dockerfile:
 ```
 FROM dockerfile/nginx
 
-ADD sites-enabled/ /etc/nginx/sites-enabled
+ADD sites-enabled /etc/nginx/sites-enabled/default
 ```
 
 Build image and run container with nginx:
 
 ```
-docker build -t nginx .
-docker run -p 80:80 -d --name=nginx --volumes-from=blog nginx
+docker build -t blog/nginx .
+docker run -p 80:80 -d --name=nginx --volumes-from=blog blog/nginx
 ```
 
 That's it, now blog is running on [adilnaimi.com](http://adilnaimi.com) and
 you can read it :) I can update it just with `docker start blog_content`.
-
-#### Conclusions
-
-
-
-![docker](https://www.docker.io/static/img/homepage-docker-logo.png)
