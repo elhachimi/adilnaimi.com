@@ -1,0 +1,14 @@
+baseurl = "http://adilnaimi.com/"
+title = "The road is long, but the way is free"
+languageCode = "en-us"
+disqusShortname = "adilnaimi"
+copyright = "Copyright (c) 2014 - 2015, Adil Naimi; all rights reserved."
+MetaDataFormat = "yaml"
+
+[author]
+    name = Adil Naimi"
+
+[indexes]
+    tag = "tags"
+    topic = "topics"
+
