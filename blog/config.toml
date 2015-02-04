@@ -6,7 +6,7 @@ copyright = "Copyright (c) 2014 - 2015, Adil Naimi; all rights reserved."
 MetaDataFormat = "yaml"
 
 [author]
-    name = Adil Naimi"
+    name = "Adil Naimi"
 
 [indexes]
     tag = "tags"
