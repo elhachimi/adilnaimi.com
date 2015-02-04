@@ -1,2 +1,2 @@
-# adil.github.io
+# adilnaimi.com
 My blog
