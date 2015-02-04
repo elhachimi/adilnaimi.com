@@ -6,8 +6,8 @@ title: "Deploying blog with docker and hugo"
 description: "Deploying blog with docker and hugo."
 date: "2014-02-04"
 categories:
-    - "coreos"
-    - "docker"
+- "coreos"
+- "docker"
     - "hugo"
 ---
 
