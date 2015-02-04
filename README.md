@@ -30,7 +30,7 @@ and update it on container start.
 Build image:
 
 ```
-docker build -t blog/content .
+docker build -t blog/content
 ```
 
 Create data container:
@@ -47,8 +47,7 @@ docker start blog_content
 
 #### Hugo
 
-[Hugo](http://hugo.spf13.com) -- very fast static site generator, written in Go (so
-many cool things written in Go btw).
+[Hugo](http://hugo.spf13.com) -- very fast static site generator, written in Go.
 
 Idea is to run hugo in docker container so it reads contents from one directory
 and writes generated blog to another.
@@ -69,7 +68,7 @@ VOLUME ["/var/www/blog"]
 ENTRYPOINT ["hugo"]
 CMD ["-w", "-s", "/src/blog", "-d", "/var/www/blog"]
 ```
-So, here we `go get` hugo and use /src(remember this from content container?)
+So, here we `go get` hugo and use /src/blog (remember this from content container?)
 as source directory for it and `/var/www/blog` as destination.
 
 Now build image and run container with hugo:
@@ -81,7 +80,7 @@ docker run --name blog --volumes-from blog_content blog/hugo
 
 Here the trick with
 [`--volumes-from`](http://docs.docker.io/use/working_with_volumes/) -- we used
-`/src` from `blog_content` container, and yeah, we're going to use
+`/src/blog` from `blog_content` container, and yeah, we're going to use
 `/var/www/blog` from `blog` container.
 
 #### Nginx
