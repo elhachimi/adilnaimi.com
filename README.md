@@ -39,7 +39,7 @@ Create data container:
 docker run --name blog_content blog/content
 ```
 
-T update content and templates from github we need just:
+To update content and templates from github we need just:
 
 ```
 docker start blog_content
