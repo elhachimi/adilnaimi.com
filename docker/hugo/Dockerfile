@@ -1,5 +1,7 @@
-FROM crosbymichael/golang
+FROM golang:1.4-onbuild
 
+#FROM crosbymichael/golang
+#FROM golang:1.4-onbuild
 #FROM golang:1.3-onbuild
 
 RUN apt-get update && apt-get install --no-install-recommends -y bzr
