@@ -17,6 +17,7 @@ I used next Dockerfile:
 FROM debian:jessie
 
 RUN apt-get update && apt-get install --no-install-recommends -y ca-certificates git-core
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN git clone http://github.com/adilroot/adilnaimi.com.git /src
 VOLUME ["/src/blog"]
 WORKDIR /src
@@ -56,6 +57,8 @@ Hugo dockerfile:
 
 ```
 FROM crosbymichael/golang
+
+#FROM golang:1.3-onbuild
 
 RUN apt-get update && apt-get install --no-install-recommends -y bzr
 
