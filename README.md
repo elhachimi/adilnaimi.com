@@ -1,11 +1,11 @@
 ---
-title: "Deploying blog with coreos docker and hugo"
-description: "Deploying blog with coreos docker and hugo."
-date: "2014-02-04"
-categories:
-  - "coreos"
-  - "docker"
-  - "hugo"
+Title: "Deploying blog with coreos docker and hugo"
+Description: "Deploying blog with coreos docker and hugo."
+Date: "04-02-2015"
+Categories:
+    - "coreos"
+    - "docker"
+    - "hugo"
 ---
 
 #### Prelude
