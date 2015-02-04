@@ -30,7 +30,7 @@ and update it on container start.
 Build image:
 
 ```
-docker build -t blog/content
+docker build -t blog/content .
 ```
 
 Create data container:
