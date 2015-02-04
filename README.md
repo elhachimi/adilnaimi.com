@@ -117,4 +117,7 @@ docker run -p 80:80 -d --name=nginx --volumes-from=blog blog/nginx
 ```
 
 That's it, now blog is running on [adilnaimi.com](http://adilnaimi.com) and
-you can read it :) I can update it just with `docker start blog_content`.
+you can read it :) I can update it just with 
+```
+docker start blog_content
+```
