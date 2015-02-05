@@ -6,7 +6,7 @@ Categories:
     - "coreos"
     - "docker"
     - "hugo"
----
+----
 
 #### Docker data only container
 
