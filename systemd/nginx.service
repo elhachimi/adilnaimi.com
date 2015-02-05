@@ -1,0 +1,15 @@
+[Unit]
+Description=Nginx
+After=docker.service hugo.service
+Requires=docker.service hugo.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill nginx
+ExecStartPre=-/usr/bin/docker rm nginx
+ExecStartPre=/usr/bin/docker build -t blog/nginx /home/core/adilnaimi.com/docker/nginx
+ExecStart=/usr/bin/docker run -p 80:80 --name=nginx --volumes-from=hugo blog/nginx:latest
+ExecStop=/usr/bin/docker stop nginx
+
+[Install]
+WantedBy=multi-user.target

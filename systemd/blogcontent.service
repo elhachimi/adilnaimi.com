@@ -1,0 +1,15 @@
+[Unit]
+Description=Docker data only container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill blog_content
+ExecStartPre=-/usr/bin/docker rm blog_content 
+ExecStartPre=/usr/bin/docker build -t blog/content /home/core/adilnaimi.com/docker/data
+ExecStart=/usr/bin/docker run --name blog_content blog/content:latest
+ExecStop=/usr/bin/docker stop blog_content
+
+[Install]
+WantedBy=multi-user.target
