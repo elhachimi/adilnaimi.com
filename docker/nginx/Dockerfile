@@ -1,3 +1,3 @@
 FROM dockerfile/nginx
 
-ADD sites-enabled /etc/nginx/sites-enabled/default
+ADD blog.conf /etc/nginx/sites-enabled/default
