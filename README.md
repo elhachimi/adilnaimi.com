@@ -1,11 +1,11 @@
 ---
-Title: "Deploying blog using coreos docker and hugo"
-Description: "Deploying blog using coreos docker and hugo."
+Title: "My personal blog setup"
+Description: "Deploying blog using CoreOS Docker and hugo."
 Date: "04-02-2015"
 Categories:
-    - "coreos"
-    - "docker"
-    - "hugo"
+- "coreos"
+- "docker"
+- "hugo"
 ---
 
 #### Docker data only container
